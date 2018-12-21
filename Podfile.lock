@@ -1,29 +1,93 @@
 PODS:
-  - RxCocoa (4.2.0):
+  - Eureka (4.3.1)
+  - FlexLayout (1.3.11)
+  - R.swift (5.0.0):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
+  - Reveal-SDK (20)
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
-  - SnapKit (4.0.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
+  - SwifterSwift (4.6.0):
+    - SwifterSwift/AppKit (= 4.6.0)
+    - SwifterSwift/CoreGraphics (= 4.6.0)
+    - SwifterSwift/CoreLocation (= 4.6.0)
+    - SwifterSwift/Foundation (= 4.6.0)
+    - SwifterSwift/MapKit (= 4.6.0)
+    - SwifterSwift/SpriteKit (= 4.6.0)
+    - SwifterSwift/SwiftStdlib (= 4.6.0)
+    - SwifterSwift/UIKit (= 4.6.0)
+  - SwifterSwift/AppKit (4.6.0)
+  - SwifterSwift/CoreGraphics (4.6.0)
+  - SwifterSwift/CoreLocation (4.6.0)
+  - SwifterSwift/Foundation (4.6.0)
+  - SwifterSwift/MapKit (4.6.0)
+  - SwifterSwift/SpriteKit (4.6.0)
+  - SwifterSwift/SwiftStdlib (4.6.0)
+  - SwifterSwift/UIKit (4.6.0)
+  - SwiftIcons (2.3.2)
   - SwiftyUserDefaults (4.0.0-alpha.1)
+  - Then (2.4.0)
 
 DEPENDENCIES:
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
-  - SnapKit (~> 4.0)
-  - SwiftyUserDefaults (= 4.0.0-alpha.1)
+  - Eureka
+  - FlexLayout
+  - R.swift
+  - Reusable
+  - Reveal-SDK
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - SVProgressHUD
+  - SwifterSwift
+  - SwiftIcons
+  - SwiftyUserDefaults (~> 4.0.0-alpha.1)
+  - Then
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Eureka
+    - FlexLayout
+    - R.swift
+    - R.swift.Library
+    - Reusable
+    - Reveal-SDK
+    - RxAtomic
     - RxCocoa
     - RxSwift
     - SnapKit
+    - SVProgressHUD
+    - SwifterSwift
+    - SwiftIcons
     - SwiftyUserDefaults
+    - Then
 
 SPEC CHECKSUMS:
-  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  FlexLayout: b008184d23aae0c56e1c916e803445a13a6f4e5a
+  R.swift: f88c7d7d48a2be4dffa132dde1b3d389620310eb
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
+  SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
+  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: daf7fe89aa801a2c242edce27388deb6a71d6ae2
+PODFILE CHECKSUM: bfd74769d8fd0c87fdf8bc5bf57f3373f76daa22
 
 COCOAPODS: 1.5.3
