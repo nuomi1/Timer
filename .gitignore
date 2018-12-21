@@ -137,3 +137,5 @@ fastlane/test_output
 
 
 # End of https://www.gitignore.io/api/carthage,cocoapods,macos,swift,xcode
+
+R.generated.swift
