@@ -1,0 +1,16 @@
+
+"detail.barcode" = "条形码";
+"detail.category.none" = "无";
+"detail.category.toothbrush" = "牙刷";
+"detail.category.towel" = "毛巾";
+"detail.category.underwear" = "内衣";
+"detail.createtime" = "创建时间";
+"detail.expiretime" = "到期时间";
+"detail.input" = "请输入";
+"detail.note" = "备注";
+"detail.noteinput" = "输入备注";
+"detail.title" = "标题";
+"detail.type" = "商品类型";
+"detail.url" = "购买链接";
+"detail.view.title" = "详情";
+"master.view.title" = "Timer";

@@ -8,14 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		0F6E46FD7EFAC0797EACA6AE /* Pods_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C51563374046B6EE02586B /* Pods_Timer.framework */; };
+		3109E7D62121D58300DE0AA2 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109E7D52121D58300DE0AA2 /* Detail.swift */; };
+		3109E7D82121D76000DE0AA2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109E7D72121D76000DE0AA2 /* DetailViewController.swift */; };
+		3109E7DA2121D81D00DE0AA2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109E7D92121D81D00DE0AA2 /* MasterViewController.swift */; };
+		312B797D217386BA005633AE /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312B797C217386BA005633AE /* UIApplication.swift */; };
+		318EC2FB21CBF797007711B3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318EC2FA21CBF797007711B3 /* R.generated.swift */; };
+		318EC30221CC99E2007711B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 318EC30021CC99E2007711B3 /* Localizable.strings */; };
 		31DA2BAD2121BE9000D21C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA2BAC2121BE9000D21C7F /* AppDelegate.swift */; };
 		31DA2BAF2121BE9000D21C7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DA2BAE2121BE9000D21C7F /* ViewController.swift */; };
 		31DA2BB22121BE9000D21C7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DA2BB02121BE9000D21C7F /* Main.storyboard */; };
 		31DA2BB42121BE9100D21C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31DA2BB32121BE9100D21C7F /* Assets.xcassets */; };
 		31DA2BB72121BE9100D21C7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31DA2BB52121BE9100D21C7F /* LaunchScreen.storyboard */; };
+		31F45AB62129D24700207070 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F45AB52129D24700207070 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3109E7D52121D58300DE0AA2 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		3109E7D72121D76000DE0AA2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3109E7D92121D81D00DE0AA2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		312B797C217386BA005633AE /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		318EC2FA21CBF797007711B3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		318EC30121CC99E2007711B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		318EC30321CC99EB007711B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		31DA2BA92121BE9000D21C7F /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31DA2BAC2121BE9000D21C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31DA2BAE2121BE9000D21C7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,6 +37,7 @@
 		31DA2BB32121BE9100D21C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31DA2BB62121BE9100D21C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31DA2BB82121BE9100D21C7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F45AB52129D24700207070 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		51105B2F18C5E64CEF587202 /* Pods-Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Timer/Pods-Timer.release.xcconfig"; sourceTree = "<group>"; };
 		B5C51563374046B6EE02586B /* Pods_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD59E528FC3268F598FACCC /* Pods-Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Timer/Pods-Timer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -40,13 +55,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31465343212B10EE00811AD1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				312B797C217386BA005633AE /* UIApplication.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		31DA2BA02121BE9000D21C7F = {
 			isa = PBXGroup;
 			children = (
-				31DA2BAB2121BE9000D21C7F /* Timer */,
-				31DA2BAA2121BE9000D21C7F /* Products */,
-				38F1EE6B06512604A9957271 /* Pods */,
 				90ED708CAF06CAFE4D91BFCC /* Frameworks */,
+				38F1EE6B06512604A9957271 /* Pods */,
+				31DA2BAA2121BE9000D21C7F /* Products */,
+				31DA2BAB2121BE9000D21C7F /* Timer */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,12 +84,19 @@
 		31DA2BAB2121BE9000D21C7F /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				31DA2BAC2121BE9000D21C7F /* AppDelegate.swift */,
-				31DA2BAE2121BE9000D21C7F /* ViewController.swift */,
-				31DA2BB02121BE9000D21C7F /* Main.storyboard */,
-				31DA2BB32121BE9100D21C7F /* Assets.xcassets */,
-				31DA2BB52121BE9100D21C7F /* LaunchScreen.storyboard */,
 				31DA2BB82121BE9100D21C7F /* Info.plist */,
+				31DA2BAC2121BE9000D21C7F /* AppDelegate.swift */,
+				3109E7D52121D58300DE0AA2 /* Detail.swift */,
+				3109E7D72121D76000DE0AA2 /* DetailViewController.swift */,
+				3109E7D92121D81D00DE0AA2 /* MasterViewController.swift */,
+				318EC2FA21CBF797007711B3 /* R.generated.swift */,
+				31F45AB52129D24700207070 /* Utils.swift */,
+				31DA2BAE2121BE9000D21C7F /* ViewController.swift */,
+				31DA2BB32121BE9100D21C7F /* Assets.xcassets */,
+				31465343212B10EE00811AD1 /* Extension */,
+				31DA2BB52121BE9100D21C7F /* LaunchScreen.storyboard */,
+				318EC30021CC99E2007711B3 /* Localizable.strings */,
+				31DA2BB02121BE9000D21C7F /* Main.storyboard */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -96,6 +126,7 @@
 			buildConfigurationList = 31DA2BBB2121BE9100D21C7F /* Build configuration list for PBXNativeTarget "Timer" */;
 			buildPhases = (
 				0F885BB6618BFFDE33412498 /* [CP] Check Pods Manifest.lock */,
+				318EC2F921CBF604007711B3 /* R.swift */,
 				31DA2BA52121BE9000D21C7F /* Sources */,
 				31DA2BA62121BE9000D21C7F /* Frameworks */,
 				31DA2BA72121BE9000D21C7F /* Resources */,
@@ -130,7 +161,6 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 31DA2BA02121BE9000D21C7F;
@@ -149,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31DA2BB72121BE9100D21C7F /* LaunchScreen.storyboard in Resources */,
+				318EC30221CC99E2007711B3 /* Localizable.strings in Resources */,
 				31DA2BB42121BE9100D21C7F /* Assets.xcassets in Resources */,
 				31DA2BB22121BE9000D21C7F /* Main.storyboard in Resources */,
 			);
@@ -175,6 +206,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		318EC2F921CBF604007711B3 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		CACE515966B037903A919006 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,17 +233,37 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Timer/Pods-Timer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -208,12 +279,27 @@
 			files = (
 				31DA2BAF2121BE9000D21C7F /* ViewController.swift in Sources */,
 				31DA2BAD2121BE9000D21C7F /* AppDelegate.swift in Sources */,
+				3109E7D62121D58300DE0AA2 /* Detail.swift in Sources */,
+				318EC2FB21CBF797007711B3 /* R.generated.swift in Sources */,
+				3109E7DA2121D81D00DE0AA2 /* MasterViewController.swift in Sources */,
+				3109E7D82121D76000DE0AA2 /* DetailViewController.swift in Sources */,
+				312B797D217386BA005633AE /* UIApplication.swift in Sources */,
+				31F45AB62129D24700207070 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		318EC30021CC99E2007711B3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				318EC30121CC99E2007711B3 /* Base */,
+				318EC30321CC99EB007711B3 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		31DA2BB02121BE9000D21C7F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -237,6 +323,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -284,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,6 +385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -339,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -355,13 +443,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 975KA7D567;
+				DEVELOPMENT_TEAM = 6SEL828NG9;
 				INFOPLIST_FILE = Timer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.nuomi1.Timer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nuomi1.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,13 +462,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 975KA7D567;
+				DEVELOPMENT_TEAM = 6SEL828NG9;
 				INFOPLIST_FILE = Timer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.nuomi1.Timer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.nuomi1.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
