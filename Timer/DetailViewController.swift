@@ -16,13 +16,18 @@ import SwifterSwift
 import SwiftIcons
 import Then
 import UIKit
+import UserNotifications
 
 class DetailViewController: FormViewController {
     private let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
 
+    private lazy var section = Section {
+        $0.tag = R.string.localizable.detailSection()
+    }
+
     private lazy var barCodeRow = IntRow(R.string.localizable.detailBarcode()) {
         $0.title = $0.tag
-        $0.placeholder = R.string.localizable.detailInput() + $0.tag!
+        $0.placeholder = R.string.localizable.detailTextRequired($0.tag!)
 
         $0.value = model.barcode
 
@@ -55,7 +60,7 @@ class DetailViewController: FormViewController {
 
     private lazy var titleRow = TextRow(R.string.localizable.detailTitle()) {
         $0.title = $0.tag
-        $0.placeholder = R.string.localizable.detailInput() + $0.tag!
+        $0.placeholder = R.string.localizable.detailTextRequired($0.tag!)
 
         $0.value = model.title
 
@@ -69,8 +74,10 @@ class DetailViewController: FormViewController {
     }
     .onChange { [weak self] row in
         guard let value = row.value else { return }
+        let dateString = value.dateString(ofStyle: self!.expireTimeRow.dateFormatter!.dateStyle)
+        let message = R.string.localizable.detailDateGreaterOrEqualThan(dateString)
         self?.expireTimeRow.remove(ruleWithIdentifier: R.string.localizable.detailExpiretimeRule())
-        self?.expireTimeRow.add(rule: RuleGreaterOrEqualThan(min: value, id: R.string.localizable.detailExpiretimeRule()))
+        self?.expireTimeRow.add(rule: RuleGreaterOrEqualThan(min: value, msg: message, id: R.string.localizable.detailExpiretimeRule()))
         self?.expireTimeRow.validate()
     }
 
@@ -81,8 +88,23 @@ class DetailViewController: FormViewController {
     }
     .onExpandInlineRow { [weak self] _, inlineRow, _ in
         guard let value = self?.createTimeRow.value else { return }
+        let dateString = value.dateString(ofStyle: inlineRow.dateFormatter!.dateStyle)
+        let message = R.string.localizable.detailDateGreaterOrEqualThan(dateString)
         inlineRow.remove(ruleWithIdentifier: R.string.localizable.detailExpiretimeRule())
-        inlineRow.add(rule: RuleGreaterOrEqualThan(min: value, id: R.string.localizable.detailExpiretimeRule()))
+        inlineRow.add(rule: RuleGreaterOrEqualThan(min: value, msg: message, id: R.string.localizable.detailExpiretimeRule()))
+    }
+    .onChange { [weak self] _ in
+        self?.notificationRow.evaluateDisabled()
+    }
+
+    private lazy var notificationRow = SwitchRow(R.string.localizable.detailNotification()) {
+        $0.title = $0.tag
+
+        $0.value = model.notification
+
+        $0.disabled = .function([]) { [weak self] _ in
+            (self?.expireTimeRow.value ?? Date(timeIntervalSince1970: 0)) < Date()
+        }
     }
 
     private lazy var typeRow = PickerInlineRow<Category>(R.string.localizable.detailType()) {
@@ -146,9 +168,7 @@ class DetailViewController: FormViewController {
     }
 
     deinit {
-        debug {
-            print(self, Date())
-        }
+        debug { print(self, Date()) }
     }
 }
 
@@ -190,13 +210,20 @@ extension DetailViewController {
                     self.model.title = self.titleRow.value!
                     self.model.createTime = self.createTimeRow.value!
                     self.model.expireTime = self.expireTimeRow.value!
+                    self.model.notification = self.notificationRow.value ?? false
                     self.model.type = self.typeRow.value ?? Category.none
                     self.model.url = self.urlRow.value
                     self.model.note = self.noteInputRow.value
 
                     try? wcdb.insertOrReplace(objects: self.model, intoTable: R.string.localizable.databaseTablenameDetail())
 
-                    SVProgressHUD.showSuccess(withStatus: "保存成功")
+                    SVProgressHUD.showSuccess(withStatus: R.string.localizable.detailSaveSuccess())
+
+                    if self.model.notification {
+                        self.addNotification(with: self.model)
+                    } else {
+                        self.removeNotification(with: self.model)
+                    }
 
                     self.navigationController?.popViewController(animated: true)
                 } else {
@@ -209,13 +236,7 @@ extension DetailViewController {
 
     private func prepareForm() {
         form
-            +++ Section()
-
-//                {
-//                $0.header = HeaderFooterView<UIView>(.callback { UIView(frame: .zero) })
-//                $0.header?.height = { 0 }
-//            }
-
+            +++ section
             <<< barCodeRow
             <<< titleRow
             <<< createTimeRow
@@ -225,9 +246,43 @@ extension DetailViewController {
             <<< noteRow
             <<< noteInputRow
 
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] in
+            guard let `self` = self else { return }
+
+            switch $0.authorizationStatus {
+            case .authorized, .provisional:
+                DispatchQueue.main.async {
+                    let section = self.form.sectionBy(tag: R.string.localizable.detailSection())
+                    try? section?.insert(row: self.notificationRow, after: self.expireTimeRow)
+                }
+            case .notDetermined, .denied:
+                break
+            }
+        }
+
         form.allRows.forEach {
             $0.validationOptions = .validatesOnChange
         }
+    }
+
+    private func addNotification(with model: Detail) {
+        let content = UNMutableNotificationContent()
+        content.body = R.string.localizable.notificationBody(model.title)
+        content.badge = 1
+
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: model.expireTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+        let request = UNNotificationRequest(identifier: model.identify.uuidString, content: content, trigger: trigger)
+
+        removeNotification(with: model)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
+    private func removeNotification(with model: Detail) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [model.identify.uuidString])
     }
 
     private func setFormDefaultMethod() {
@@ -307,10 +362,10 @@ extension DetailViewController: UIImagePickerControllerDelegate {
             let qrCodeFeatures = qrCodeDetector.features(in: ciImage) as? [CIQRCodeFeature]
         else { return }
 
-        print(qrCodeFeatures.count)
+        debug { print(qrCodeFeatures.count) }
 
         for feature in qrCodeFeatures {
-            print(feature.messageString ?? "ERROR")
+            debug { print(feature.messageString ?? "ERROR") }
         }
     }
 }
