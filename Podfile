@@ -1,9 +1,18 @@
-platform :ios, "9.0"
+platform :ios, "11"
 use_frameworks!
 
 target "Timer" do
-  pod "RxCocoa", "~> 4.0"
-  pod "RxSwift", "~> 4.0"
-  pod "SwiftyUserDefaults", "4.0.0-alpha.1"
-  pod "SnapKit", "~> 4.0"
+  pod "Eureka"
+  pod "FlexLayout"
+  pod "Reusable"
+  pod "RxCocoa"
+  pod "RxSwift"
+  pod "SnapKit"
+  pod "SwiftIcons"
+  pod "SwifterSwift"
+  pod "SwiftyUserDefaults", "~> 4.0.0-alpha.1"
+  pod "Then"
+  pod "SVProgressHUD"
+  pod "R.swift"
+  pod "Reveal-SDK", :configurations => ["Debug"]
 end
