@@ -18,3 +18,6 @@
 "detail.category.underwear" = "Underwear";
 "detail.category.toothbrush" = "Toothbrush";
 "detail.category.none" = "None";
+
+"database.filename" = "timer.db";
+"database.tablename.detail" = "detail";

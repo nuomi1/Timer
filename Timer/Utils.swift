@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Reusable
+import WCDBSwift
 
 func debug(_ closure: () -> Void) {
     assert({
@@ -14,3 +16,9 @@ func debug(_ closure: () -> Void) {
         return true
     }())
 }
+
+let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+let fileURL = documentDirectory.appendingPathComponent(R.string.localizable.databaseFilename())
+let wcdb = Database(withFileURL: fileURL)
+
+extension UITableViewCell: Reusable {}
