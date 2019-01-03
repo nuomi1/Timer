@@ -131,7 +131,7 @@ class DetailViewController: FormViewController {
 
     private let disposeBag = DisposeBag()
 
-    var model = Detail.default
+    private var model = Detail.default
 
     init(model: Detail?) {
         if let model = model {
@@ -146,7 +146,9 @@ class DetailViewController: FormViewController {
     }
 
     deinit {
-        print(self, Date())
+        debug {
+            print(self, Date())
+        }
     }
 }
 
@@ -185,11 +187,18 @@ extension DetailViewController {
 
                 if validationErrors.isEmpty {
                     self.model.barcode = self.barCodeRow.value!
-                    self.model.title = self.titleRow.title!
+                    self.model.title = self.titleRow.value!
                     self.model.createTime = self.createTimeRow.value!
                     self.model.expireTime = self.expireTimeRow.value!
+                    self.model.type = self.typeRow.value ?? Category.none
                     self.model.url = self.urlRow.value
                     self.model.note = self.noteInputRow.value
+
+                    try? wcdb.insertOrReplace(objects: self.model, intoTable: R.string.localizable.databaseTablenameDetail())
+
+                    SVProgressHUD.showSuccess(withStatus: "保存成功")
+
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     let message = validationErrors.map { $0.msg }.joined(separator: "\n")
                     SVProgressHUD.showError(withStatus: message)
