@@ -10,6 +10,8 @@ import Foundation
 import SwifterSwift
 import WCDBSwift
 
+// MARK: - Category
+
 enum Category: String, Codable, CaseIterable {
     case towel // 毛巾
     case underwear // 内衣
@@ -31,11 +33,14 @@ extension Category: ColumnCodable {
     }
 }
 
+// MARK: - Detail
+
 struct Detail: Codable {
     var identify = UUID() // 唯一标记
     var title = String() // 标题
     var createTime = Date() // 创建时间
     var expireTime = Date() // 到期时间
+    var notification = false // 到期通知
     var barcode: Int? // 条形码
     var type: Category? // 商品类型
     var url: URL? // 购买链接
@@ -50,6 +55,7 @@ extension Detail: TableCodable {
         case title
         case createTime
         case expireTime
+        case notification
         case barcode
         case type
         case url
@@ -66,9 +72,11 @@ extension Detail: TableCodable {
 
 extension Detail {
     static var `default`: Detail {
-        return Detail(identify: UUID(), title: String(), createTime: Date().beginning(of: .day)!, expireTime: Date().adding(.day, value: 1).beginning(of: .day)!, barcode: nil, type: Category.none, url: nil, note: nil)
+        return Detail(identify: UUID(), title: String(), createTime: Date().beginning(of: .day)!, expireTime: Date().adding(.day, value: 1).beginning(of: .day)!, notification: false, barcode: nil, type: Category.none, url: nil, note: nil)
     }
 }
+
+// MARK: - UUID
 
 extension UUID: ColumnCodable {
     public static var columnType: ColumnType {

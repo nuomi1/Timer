@@ -1,10 +1,13 @@
 "master.view.title" = "Timer";
 "detail.view.title" = "Detail";
 
+"detail.section" = "Section";
+
 "detail.barcode" = "BarCode";
 "detail.title" = "Title";
 "detail.createtime" = "CreateTime";
 "detail.expiretime" = "ExpireTime";
+"detail.notification" = "Notification";
 "detail.type" = "Type";
 "detail.url" = "URL";
 "detail.note" = "Note";
@@ -12,7 +15,10 @@
 
 "detail.expiretime.rule" = "ExpireTimeRule";
 
-"detail.input" = "Please input ";
+"detail.text.required" = "Please input %@";
+"detail.date.greaterOrEqualThan" = "Please select date greater or equals than %@";
+
+"detail.save.success" = "Save success";
 
 "detail.category.towel" = "Towel";
 "detail.category.underwear" = "Underwear";
@@ -21,3 +27,5 @@
 
 "database.filename" = "timer.db";
 "database.tablename.detail" = "detail";
+
+"notification.body" = "The recommended time for your %@ has arrived, please change it in time!";
