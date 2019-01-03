@@ -10,6 +10,8 @@ import Foundation
 import SwifterSwift
 import WCDBSwift
 
+// MARK: - Category
+
 enum Category: String, Codable, CaseIterable {
     case towel // 毛巾
     case underwear // 内衣
@@ -30,6 +32,8 @@ extension Category: ColumnCodable {
         return FundamentalValue(rawValue)
     }
 }
+
+// MARK: - Detail
 
 struct Detail: Codable {
     var identify = UUID() // 唯一标记
@@ -69,6 +73,8 @@ extension Detail {
         return Detail(identify: UUID(), title: String(), createTime: Date().beginning(of: .day)!, expireTime: Date().adding(.day, value: 1).beginning(of: .day)!, barcode: nil, type: Category.none, url: nil, note: nil)
     }
 }
+
+// MARK: - UUID
 
 extension UUID: ColumnCodable {
     public static var columnType: ColumnType {

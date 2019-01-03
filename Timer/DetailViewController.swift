@@ -292,7 +292,7 @@ extension DetailViewController {
     }
 }
 
-// MARK: UIImagePickerControllerDelegate
+// MARK: - UIImagePickerControllerDelegate
 
 extension DetailViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -315,6 +315,6 @@ extension DetailViewController: UIImagePickerControllerDelegate {
     }
 }
 
-// MARK: UINavigationControllerDelegate
+// MARK: - UINavigationControllerDelegate
 
 extension DetailViewController: UINavigationControllerDelegate {}
