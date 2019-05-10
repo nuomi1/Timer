@@ -1,52 +1,57 @@
 PODS:
-  - Eureka (4.3.1)
-  - FlexLayout (1.3.11)
-  - MJRefresh (3.1.15.7)
-  - R.swift (5.0.0):
+  - BarcodeScanner (4.1.3)
+  - Eureka (5.0.0)
+  - FlexLayout (1.3.12)
+  - MJRefresh (3.2.0)
+  - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
-  - R.swift.Library (5.0.0)
-  - Reusable (4.0.5):
-    - Reusable/Storyboard (= 4.0.5)
-    - Reusable/View (= 4.0.5)
-  - Reusable/Storyboard (4.0.5)
-  - Reusable/View (4.0.5)
-  - Reveal-SDK (20)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
-  - SnapKit (4.2.0)
-  - SQLiteRepairKit (1.2.1):
+  - R.swift.Library (5.0.1)
+  - Reusable (4.1.0):
+    - Reusable/Storyboard (= 4.1.0)
+    - Reusable/View (= 4.1.0)
+  - Reusable/Storyboard (4.1.0)
+  - Reusable/View (4.1.0)
+  - Reveal-SDK (22)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SnapKit (5.0.0)
+  - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - SVProgressHUD (2.2.5)
-  - SwifterSwift (4.6.0):
-    - SwifterSwift/AppKit (= 4.6.0)
-    - SwifterSwift/CoreGraphics (= 4.6.0)
-    - SwifterSwift/CoreLocation (= 4.6.0)
-    - SwifterSwift/Foundation (= 4.6.0)
-    - SwifterSwift/MapKit (= 4.6.0)
-    - SwifterSwift/SpriteKit (= 4.6.0)
-    - SwifterSwift/SwiftStdlib (= 4.6.0)
-    - SwifterSwift/UIKit (= 4.6.0)
-  - SwifterSwift/AppKit (4.6.0)
-  - SwifterSwift/CoreGraphics (4.6.0)
-  - SwifterSwift/CoreLocation (4.6.0)
-  - SwifterSwift/Foundation (4.6.0)
-  - SwifterSwift/MapKit (4.6.0)
-  - SwifterSwift/SpriteKit (4.6.0)
-  - SwifterSwift/SwiftStdlib (4.6.0)
-  - SwifterSwift/UIKit (4.6.0)
+  - SwifterSwift (5.0.0):
+    - SwifterSwift/AppKit (= 5.0.0)
+    - SwifterSwift/CoreGraphics (= 5.0.0)
+    - SwifterSwift/CoreLocation (= 5.0.0)
+    - SwifterSwift/Dispatch (= 5.0.0)
+    - SwifterSwift/Foundation (= 5.0.0)
+    - SwifterSwift/MapKit (= 5.0.0)
+    - SwifterSwift/SpriteKit (= 5.0.0)
+    - SwifterSwift/SwiftStdlib (= 5.0.0)
+    - SwifterSwift/UIKit (= 5.0.0)
+  - SwifterSwift/AppKit (5.0.0)
+  - SwifterSwift/CoreGraphics (5.0.0)
+  - SwifterSwift/CoreLocation (5.0.0)
+  - SwifterSwift/Dispatch (5.0.0)
+  - SwifterSwift/Foundation (5.0.0)
+  - SwifterSwift/MapKit (5.0.0)
+  - SwifterSwift/SpriteKit (5.0.0)
+  - SwifterSwift/SwiftStdlib (5.0.0)
+  - SwifterSwift/UIKit (5.0.0)
   - SwiftIcons (2.3.2)
-  - SwiftyUserDefaults (4.0.0-alpha.1)
+  - SwiftyUserDefaults (4.0.0)
   - Then (2.4.0)
-  - WCDB.swift (1.0.7.5):
+  - WCDB.swift (1.0.8.2):
     - SQLiteRepairKit (~> 1.2.0)
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - WCDBOptimizedSQLCipher (1.2.1)
-  - WoodPeckeriOS (1.1.6)
+  - WoodPeckeriOS (1.2.0)
 
 DEPENDENCIES:
+  - BarcodeScanner
   - Eureka
   - FlexLayout
   - MJRefresh
@@ -59,13 +64,14 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwifterSwift
   - SwiftIcons
-  - SwiftyUserDefaults (~> 4.0.0-alpha.1)
+  - SwiftyUserDefaults
   - Then
   - WCDB.swift
   - WoodPeckeriOS
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BarcodeScanner
     - Eureka
     - FlexLayout
     - MJRefresh
@@ -73,8 +79,8 @@ SPEC REPOS:
     - R.swift.Library
     - Reusable
     - Reveal-SDK
-    - RxAtomic
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SnapKit
     - SQLiteRepairKit
@@ -88,27 +94,28 @@ SPEC REPOS:
     - WoodPeckeriOS
 
 SPEC CHECKSUMS:
-  Eureka: 28ea296f06710f6745266b71f17862048941a32d
-  FlexLayout: b008184d23aae0c56e1c916e803445a13a6f4e5a
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  R.swift: f88c7d7d48a2be4dffa132dde1b3d389620310eb
-  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
-  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
-  Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SQLiteRepairKit: 4d21bab9eff6a273f63da6815a0d1659e53f5bde
+  BarcodeScanner: fce1ad2b3f28286b1ab5091fe0979789618bee27
+  Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
+  FlexLayout: 7580d328462b39eaa81f5c9ae47f71450870decb
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+  Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
+  Reveal-SDK: 1385ab77aa15e9a3e21f798c74bd8e94cb54c651
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
+  SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
-  SwiftyUserDefaults: cebe0ff9472f52699772a514b6f7155861d8069b
+  SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
-  WCDB.swift: 87aee41f5ca3aded9c6f9b68b0ef3e88918a5ee2
+  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
-  WoodPeckeriOS: 9cc39784069a2d43874fe675628ee501232f12fe
+  WoodPeckeriOS: 7fabf5c25fe5da854a662da0a4455e45b9cd2a3c
 
-PODFILE CHECKSUM: 76426a121961e05f64cea76ba05e14dff922ea53
+PODFILE CHECKSUM: 91f98d81ef967a943b7360ed5cc695eddd1175a1
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

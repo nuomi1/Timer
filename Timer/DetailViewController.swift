@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import BarcodeScanner
 import Eureka
 import RxCocoa
 import RxSwift
@@ -40,13 +41,15 @@ class DetailViewController: FormViewController {
 
         let size = CGSize(width: 30, height: 30)
 
-        let icon = UIImageView().then {
-            $0.setIcon(icon: .fontAwesomeSolid(.camera), size: size)
-            $0.contentMode = .center
-
-            $0.isUserInteractionEnabled = true
-            $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:))))
+        let icon = UIButton(type: .custom).then {
+            $0.setIcon(icon: .fontAwesomeSolid(.camera), forState: .normal)
         }
+
+        icon.rx.tap
+            .bind {
+                self.handleTap(nil)
+            }
+            .disposed(by: self.disposeBag)
 
         cell.addSubview(icon)
 
@@ -57,6 +60,11 @@ class DetailViewController: FormViewController {
             $0.centerY.equalToSuperview()
         }
     }
+    .cellUpdate { cell, row in
+        if !row.isValid {
+            cell.titleLabel?.textColor = .red
+        }
+    }
 
     private lazy var titleRow = TextRow(R.string.localizable.detailTitle()) {
         $0.title = $0.tag
@@ -65,6 +73,11 @@ class DetailViewController: FormViewController {
         $0.value = model.title
 
         $0.add(rule: RuleRequired(msg: $0.placeholder!))
+    }
+    .cellUpdate { cell, row in
+        if !row.isValid {
+            cell.titleLabel?.textColor = .red
+        }
     }
 
     private lazy var createTimeRow = DateInlineRow(R.string.localizable.detailCreatetime()) {
@@ -80,21 +93,31 @@ class DetailViewController: FormViewController {
         self?.expireTimeRow.add(rule: RuleGreaterOrEqualThan(min: value, msg: message, id: R.string.localizable.detailExpiretimeRule()))
         self?.expireTimeRow.validate()
     }
+    .cellUpdate { cell, row in
+        if !row.isValid {
+            cell.textLabel?.textColor = .red
+        }
+    }
 
     private lazy var expireTimeRow = DateInlineRow(R.string.localizable.detailExpiretime()) {
         $0.title = $0.tag
 
         $0.value = model.expireTime
     }
-    .onExpandInlineRow { [weak self] _, inlineRow, _ in
-        guard let value = self?.createTimeRow.value else { return }
-        let dateString = value.dateString(ofStyle: inlineRow.dateFormatter!.dateStyle)
-        let message = R.string.localizable.detailDateGreaterOrEqualThan(dateString)
-        inlineRow.remove(ruleWithIdentifier: R.string.localizable.detailExpiretimeRule())
-        inlineRow.add(rule: RuleGreaterOrEqualThan(min: value, msg: message, id: R.string.localizable.detailExpiretimeRule()))
+    .onExpandInlineRow { [weak self] _, _, _ in
+//        guard let value = self?.createTimeRow.value else { return }
+//        let dateString = value.dateString(ofStyle: inlineRow.dateFormatter!.dateStyle)
+//        let message = R.string.localizable.detailDateGreaterOrEqualThan(dateString)
+//        inlineRow.remove(ruleWithIdentifier: R.string.localizable.detailExpiretimeRule())
+//        inlineRow.add(rule: RuleGreaterOrEqualThan(min: value, msg: message, id: R.string.localizable.detailExpiretimeRule()))
     }
     .onChange { [weak self] _ in
         self?.notificationRow.evaluateDisabled()
+    }
+    .cellUpdate { cell, row in
+        if !row.isValid {
+            cell.textLabel?.textColor = .red
+        }
     }
 
     private lazy var notificationRow = SwitchRow(R.string.localizable.detailNotification()) {
@@ -102,9 +125,9 @@ class DetailViewController: FormViewController {
 
         $0.value = model.notification
 
-        $0.disabled = .function([]) { [weak self] _ in
-            (self?.expireTimeRow.value ?? Date(timeIntervalSince1970: 0)) < Date()
-        }
+//        $0.disabled = .function([]) { [weak self] _ in
+//            (self?.expireTimeRow.value ?? Date(timeIntervalSince1970: 0)) < Date()
+//        }
     }
 
     private lazy var typeRow = PickerInlineRow<Category>(R.string.localizable.detailType()) {
@@ -134,6 +157,11 @@ class DetailViewController: FormViewController {
 
         $0.value = model.url
     }
+    .cellUpdate { cell, row in
+        if !row.isValid {
+            cell.titleLabel?.textColor = .red
+        }
+    }
 
     private lazy var noteRow = LabelRow(R.string.localizable.detailNote()) {
         $0.title = $0.tag
@@ -146,9 +174,10 @@ class DetailViewController: FormViewController {
         $0.value = model.note
     }
 
-    private lazy var imagePickerController = UIImagePickerController().then {
-        $0.sourceType = .camera
-        $0.delegate = self
+    private lazy var barcodeScannerViewController = BarcodeScannerViewController().then {
+        $0.codeDelegate = self
+        $0.errorDelegate = self
+        $0.dismissalDelegate = self
     }
 
     private let disposeBag = DisposeBag()
@@ -182,16 +211,6 @@ extension DetailViewController {
         prepareForm()
 
         tableView.tableFooterView = UIView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setFormDefaultMethod()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsetFormDefaultMethod()
     }
 
     private func prepareNavigationItem() {
@@ -247,7 +266,7 @@ extension DetailViewController {
             <<< noteInputRow
 
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch $0.authorizationStatus {
             case .authorized, .provisional:
@@ -256,6 +275,8 @@ extension DetailViewController {
                     try? section?.insert(row: self.notificationRow, after: self.expireTimeRow)
                 }
             case .notDetermined, .denied:
+                break
+            @unknown default:
                 break
             }
         }
@@ -285,91 +306,39 @@ extension DetailViewController {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [model.identify.uuidString])
     }
 
-    private func setFormDefaultMethod() {
-        IntRow.defaultCellUpdate = { cell, row in
-            if !row.isValid {
-                cell.titleLabel?.textColor = .red
-            }
-        }
-
-        TextRow.defaultCellUpdate = { cell, row in
-            if !row.isValid {
-                cell.titleLabel?.textColor = .red
-            }
-        }
-
-        URLRow.defaultCellUpdate = { cell, row in
-            if !row.isValid {
-                cell.titleLabel?.textColor = .red
-            }
-        }
-
-        DateInlineRow.defaultCellUpdate = { cell, row in
-            if !row.isValid {
-                cell.textLabel?.textColor = .red
-            }
-        }
-    }
-
-    private func unsetFormDefaultMethod() {
-        IntRow.defaultCellUpdate = nil
-        TextRow.defaultCellUpdate = nil
-        URLRow.defaultCellUpdate = nil
-        DateInlineRow.defaultCellUpdate = nil
-    }
-
-    @objc
-    private func handleTap(sender: UITapGestureRecognizer) {
-        guard checkCamera() else { return }
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { return }
-        guard UIImagePickerController.isCameraDeviceAvailable(.rear) else { return }
-
-        present(imagePickerController, animated: true, completion: nil)
-    }
-
-    private func checkCamera() -> Bool {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { _ in }
-            return false
-        case .restricted, .denied:
-            guard
-                let url = URL(string: UIApplication.openSettingsURLString),
-                UIApplication.shared.canOpenURL(url)
-            else { return false }
-
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
-            return false
-        case .authorized:
-            return true
-        }
+    private func handleTap(_ sender: UITapGestureRecognizer?) {
+        barcodeScannerViewController.reset(animated: false)
+        present(barcodeScannerViewController, animated: true, completion: nil)
     }
 }
 
-// MARK: - UIImagePickerControllerDelegate
+// MARK: - BarcodeScannerCodeDelegate
 
-extension DetailViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        defer {
-            picker.dismiss(animated: true, completion: nil)
+extension DetailViewController: BarcodeScannerCodeDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        guard type == AVMetadataObject.ObjectType.code128.rawValue, let barCode = Int(code) else {
+            controller.resetWithError(message: "不是条形码")
+            return
         }
 
-        guard
-            let uiImage = info[.originalImage] as? UIImage,
-            let ciImage = CIImage(image: uiImage),
-            let qrCodeDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil),
-            let qrCodeFeatures = qrCodeDetector.features(in: ciImage) as? [CIQRCodeFeature]
-        else { return }
-
-        debug { print(qrCodeFeatures.count) }
-
-        for feature in qrCodeFeatures {
-            debug { print(feature.messageString ?? "ERROR") }
-        }
+        barCodeRow.value = barCode
+        barCodeRow.reload()
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
-// MARK: - UINavigationControllerDelegate
+// MARK: - BarcodeScannerErrorDelegate
 
-extension DetailViewController: UINavigationControllerDelegate {}
+extension DetailViewController: BarcodeScannerErrorDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+        controller.resetWithError(message: error.localizedDescription)
+    }
+}
+
+// MARK: - BarcodeScannerDismissalDelegate
+
+extension DetailViewController: BarcodeScannerDismissalDelegate {
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
