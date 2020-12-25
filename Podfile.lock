@@ -1,7 +1,7 @@
 PODS:
   - BarcodeScanner (4.1.3)
   - Eureka (5.0.0)
-  - FlexLayout (1.3.12)
+  - FlexLayout (1.3.15)
   - MJRefresh (3.2.0)
   - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
@@ -11,7 +11,7 @@ PODS:
     - Reusable/View (= 4.1.0)
   - Reusable/Storyboard (4.1.0)
   - Reusable/View (4.1.0)
-  - Reveal-SDK (22)
+  - Reveal-SDK (23)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -43,12 +43,12 @@ PODS:
   - SwifterSwift/UIKit (5.0.0)
   - SwiftIcons (2.3.2)
   - SwiftyUserDefaults (4.0.0)
-  - Then (2.4.0)
+  - Then (2.5.0)
   - WCDB.swift (1.0.8.2):
     - SQLiteRepairKit (~> 1.2.0)
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - WCDBOptimizedSQLCipher (1.2.1)
-  - WoodPeckeriOS (1.2.0)
+  - WoodPeckeriOS (1.2.2)
 
 DEPENDENCIES:
   - BarcodeScanner
@@ -70,7 +70,7 @@ DEPENDENCIES:
   - WoodPeckeriOS
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - BarcodeScanner
     - Eureka
     - FlexLayout
@@ -96,12 +96,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BarcodeScanner: fce1ad2b3f28286b1ab5091fe0979789618bee27
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
-  FlexLayout: 7580d328462b39eaa81f5c9ae47f71450870decb
+  FlexLayout: 2469234f9703cadcdc6c7ca7b80dc87f3677c45c
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
-  Reveal-SDK: 1385ab77aa15e9a3e21f798c74bd8e94cb54c651
+  Reveal-SDK: bb223749b198a2b9bad6043ec6ad748f99e7abe5
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
@@ -111,11 +111,11 @@ SPEC CHECKSUMS:
   SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
-  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+  Then: 0157115e883545c77967b452fe74a1d25fb796e1
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
-  WoodPeckeriOS: 7fabf5c25fe5da854a662da0a4455e45b9cd2a3c
+  WoodPeckeriOS: 3802768524692cf3ff7c3a1973b4add455597861
 
 PODFILE CHECKSUM: 91f98d81ef967a943b7360ed5cc695eddd1175a1
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.10.0
