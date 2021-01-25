@@ -20,18 +20,3 @@ target "Timer" do
   pod "WCDB.swift"
   pod "WoodPeckeriOS", :configurations => ["Debug"]
 end
-
-post_install do |installer|
-
-  swift_4_0 = [
-    'BarcodeScanner',
-  ]
-
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      if swift_4_0.include? target.name
-        config.build_settings['SWIFT_VERSION'] = '4.0'
-      end
-    end
-  end
-end
