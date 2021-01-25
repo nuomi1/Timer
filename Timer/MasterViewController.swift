@@ -41,7 +41,7 @@ extension MasterViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        tableView.mj_header.beginRefreshing()
+        tableView.mj_header?.beginRefreshing()
     }
 
     private func prepareNavigationItem() {
@@ -69,12 +69,12 @@ extension MasterViewController {
 
     private func baseLoadData(page: Int, limit: Int = 30) -> [Detail] {
         if let model: [Detail] = try? wcdb.getObjects(fromTable: R.string.localizable.databaseTablenameDetail(), orderBy: [Detail.Properties.createTime.asOrder(by: .ascending)], limit: limit, offset: (page - 1) * limit), !model.isEmpty {
-            tableView.mj_header.endRefreshing()
-            tableView.mj_footer.endRefreshing()
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
             return model
         } else {
-            tableView.mj_header.endRefreshing()
-            tableView.mj_footer.endRefreshingWithNoMoreData()
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshingWithNoMoreData()
             return []
         }
     }
