@@ -316,7 +316,7 @@ extension DetailViewController {
 
 extension DetailViewController: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-        guard type == AVMetadataObject.ObjectType.code128.rawValue, let barCode = Int(code) else {
+        guard type == AVMetadataObject.ObjectType.ean13.rawValue, let barCode = Int(code) else {
             controller.resetWithError(message: "不是条形码")
             return
         }
